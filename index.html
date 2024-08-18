@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Matching and Quiz Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Memory Matching and Quiz Games</h1>
+
+        <div id="game-selection">
+            <button onclick="showGame('memory')">Play Memory Matching Game</button>
+            <button onclick="showGame('quiz')">Play Quiz Game</button>
+        </div>
+
+        <div id="memory-game" class="game-container" style="display: none;">
+            <h2>Memory Matching Game</h2>
+            <div id="game-board"></div>
+            <div class="info">
+                <span id="moves">Moves: 0</span>
+                <span id="timer">Time: 0s</span>
+            </div>
+            <button id="reset-button">Reset Game</button>
+        </div>
+
+        <div id="quiz-game" class="quiz-container" style="display: none;">
+            <h2>Simple Quiz Game</h2>
+            <div id="quiz">
+                <div id="question"></div>
+                <div id="choices"></div>
+            </div>
+            <button id="next-button">Next Question</button>
+            <div id="score"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background:linear-gradient(to right, #ff3300, #60d944);
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#game-selection {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#game-selection button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #2e3a46;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+#game-selection button:hover {
+    background-color: #394b59;
+}
+
+.game-container, .quiz-container {
+    background-color: #59d4bf;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin: 20px 0;
+}
+
+.card {
+    background-color: #2e3a46;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    aspect-ratio: 1;
+    transform: scale(1);
+    transition: transform 0.2s ease;
+}
+
+.card.flipped {
+    background-color: #fff;
+    color: #2e3a46;
+    transform: scale(1.05);
+}
+
+.card.matched {
+    background-color: #8bc34a;
+    color: #ffffff;
+    cursor: default;
+}
+
+.info {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #2e3a46;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #346285;
+}
+
+#quiz {
+    margin-bottom: 20px;
+}
+
+#question {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#choices button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #4a36ff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#choices button:hover {
+    background-color: #f555b5;
+}
+
+#score {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 10px;
+    }
+
+    #game-board {
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 8px;
+    }
+
+    .card {
+        font-size: 1.5rem;
+    }
+
+    .info, #score {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+}
