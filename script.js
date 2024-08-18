@@ -1,21 +1,23 @@
 function showGame(game) {
     document.getElementById('memory-game').style.display = 'none';
     document.getElementById('quiz-game').style.display = 'none';
+    
     if (game === 'memory') {
         document.getElementById('memory-game').style.display = 'block';
         startGame();
     } else if (game === 'quiz') {
         document.getElementById('quiz-game').style.display = 'block';
-        loadQuestion();
+        startQuizGame();
     }
 }
 
 const icons = [
-    '🍎', '🍌', '🍒', '🍇',
-    '🍉', '🍋', '🍓', '🍍',
-    '🍎', '🍌', '🍒', '🍇',
-    '🍉', '🍋', '🍓', '🍍'
+    '🐶', '🐱', '🐭', '🐹',
+    '🐰', '🦊', '🐻', '🐼',
+    '🐶', '🐱', '🐭', '🐹',
+    '🐰', '🦊', '🐻', '🐼'
 ];
+
 
 let firstCard = null;
 let secondCard = null;
@@ -39,7 +41,9 @@ function startGame() {
     timeElapsed = 0;
     movesDisplay.textContent = `Moves: ${moves}`;
     timerDisplay.textContent = `Time: ${timeElapsed}s`;
+
     clearInterval(timerInterval);
+
     timerInterval = setInterval(() => {
         timeElapsed++;
         timerDisplay.textContent = `Time: ${timeElapsed}s`;
@@ -80,10 +84,14 @@ function flipCard() {
         firstCard.classList.add('matched');
         secondCard.classList.add('matched');
         matchCount += 2;
+
         if (matchCount === icons.length) {
             clearInterval(timerInterval);
-            alert(`You've won the game in ${moves} moves and ${timeElapsed} seconds!`);
+            setTimeout(() => {
+                alert(`You've won the game in ${moves} moves and ${timeElapsed} seconds!`);
+            }, 500);
         }
+
         resetSelection();
     } else {
         setTimeout(() => {
@@ -118,6 +126,31 @@ const questions = [
         question: "Which planet is known as the Red Planet?",
         choices: ["Earth", "Mars", "Jupiter", "Venus"],
         correct: "Mars"
+    },
+    {
+        question: "What is the largest ocean on Earth?",
+        choices: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+        correct: "Pacific Ocean"
+    },
+    {
+        question: "Who wrote the play 'Romeo and Juliet'?",
+        choices: ["William Shakespeare", "Leo Tolstoy", "Charles Dickens", "Mark Twain"],
+        correct: "William Shakespeare"
+    },
+    {
+        question: "What is the chemical symbol for water?",
+        choices: ["H2O", "CO2", "O2", "NaCl"],
+        correct: "H2O"
+    },
+    {
+        question: "In which year did World War II end?",
+        choices: ["1942", "1945", "1948", "1950"],
+        correct: "1945"
+    },
+    {
+        question: "Who is known as the father of computers?",
+        choices: ["Charles Babbage", "Alan Turing", "Thomas Edison", "Albert Einstein"],
+        correct: "Charles Babbage"
     }
 ];
 
@@ -145,25 +178,31 @@ function loadQuestion() {
 function selectAnswer(selected, correct) {
     if (selected === correct) {
         score++;
+        setTimeout(() => {
+            nextQuestion();
+        }, 1000);
     }
+
     document.querySelectorAll('#choices button').forEach(button => {
         button.disabled = true;
         if (button.textContent === correct) {
             button.style.backgroundColor = '#8bc34a';
         } else if (button.textContent === selected) {
-            button.style.backgroundColor = '#e57373';
+            button.style.backgroundColor = '#e57373'; 
         }
     });
 }
 
-nextButton.addEventListener('click', () => {
+function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         loadQuestion();
     } else {
         displayScore();
     }
-});
+}
+
+nextButton.addEventListener('click', nextQuestion);
 
 function displayScore() {
     questionElement.textContent = "Quiz Completed!";
@@ -171,7 +210,6 @@ function displayScore() {
     scoreElement.textContent = `Your Score: ${score}/${questions.length}`;
     nextButton.style.display = 'none';
 }
-
 function startQuizGame() {
     currentQuestionIndex = 0;
     score = 0;
@@ -179,4 +217,3 @@ function startQuizGame() {
     nextButton.style.display = 'block';
     loadQuestion();
 }
-
