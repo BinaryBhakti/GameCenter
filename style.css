@@ -4,25 +4,33 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background:linear-gradient(to right, #ff3300, #60d944);
-    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
-    padding: 20px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
     box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 2rem;
 }
 
 h2 {
     text-align: center;
     margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 #game-selection {
@@ -31,59 +39,60 @@ h2 {
 }
 
 #game-selection button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     margin: 10px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     border: none;
-    border-radius: 5px;
-    background-color: #2e3a46;
+    border-radius: 8px;
+    background-color: #00bfa6;
     color: #ffffff;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #game-selection button:hover {
-    background-color: #394b59;
+    background-color: #00a28f;
+    transform: translateY(-2px);
 }
 
 .game-container, .quiz-container {
-    background-color: #59d4bf;
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 25px;
     margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 #game-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
+    grid-gap: 12px;
     margin: 20px 0;
 }
 
 .card {
-    background-color: #2e3a46;
-    border-radius: 10px;
+    background-color: #1e1f26;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    color: #ffffff;
+    color: transparent;
     cursor: pointer;
     position: relative;
     aspect-ratio: 1;
     transform: scale(1);
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .card.flipped {
-    background-color: #fff;
-    color: #2e3a46;
+    background-color: #345194;
+    color: #1e1f26;
     transform: scale(1.05);
 }
 
 .card.matched {
-    background-color: #8bc34a;
+    background-color: #00c853;
     color: #ffffff;
     cursor: default;
 }
@@ -92,22 +101,23 @@ h2 {
     margin: 20px 0;
     display: flex;
     justify-content: space-between;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 1rem;
     cursor: pointer;
     border: none;
-    border-radius: 5px;
-    background-color: #2e3a46;
+    border-radius: 8px;
+    background-color: #00bfa6;
     color: #ffffff;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #346285;
+    background-color: #00a28f;
+    transform: translateY(-2px);
 }
 
 #quiz {
@@ -115,38 +125,41 @@ button:hover {
 }
 
 #question {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 10px;
 }
 
 #choices button {
     display: block;
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 12px;
+    padding: 12px;
     width: 100%;
-    background-color: #4a36ff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #2979ff;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #choices button:hover {
-    background-color: #f555b5;
+    background-color: #1565c0;
+    transform: translateY(-2px);
 }
 
 #score {
     font-size: 1.2rem;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 @media (max-width: 500px) {
     .container {
-        padding: 10px;
+        padding: 20px;
     }
 
     #game-board {
         grid-template-columns: repeat(4, 1fr);
-        grid-gap: 8px;
+        grid-gap: 10px;
     }
 
     .card {
